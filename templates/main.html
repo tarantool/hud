@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Tarantool HUD{% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-light bg-faded">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Tarantool HUD</a>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+   <div class="card-deck-wrapper" style="display: flex;">
+     <div class="card-deck" style="width:auto;">
+       {% for module in modules %}
+         {% set data = module['data'] %}
+         {% include module['name']+'.html' %}
+       {% endfor %}
+     </div>
+   </div>
+</div>
+
+{% endblock %}

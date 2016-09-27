@@ -1,0 +1,29 @@
+<div class="card" style="max-width: 18rem;">
+  <h2 class="card-header">
+    <a href="{{data['url']}}">Concourse</a>
+  </h2>
+
+  <div class="card-block">
+  <p>
+    Successful: {{ data['successful_builds'] | length }}
+  </p>
+
+  {% if data['successful_builds'] | length > 0 %}
+  <div class="alert alert-danger" role="alert">
+    <p>
+      Failed: {{data['failed_builds'] | length}}
+    </p>
+    <ul class="list-unstyled">
+      {% for build in data['failed_builds'] %}
+      <li>
+        <a href="{{build['url']}}" class="alert-link">
+          {{build['pipeline']}}/{{build['name']}}
+        </a> [{{build['num_failed']}}]
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  </div>
+</div>
