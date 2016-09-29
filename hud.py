@@ -59,7 +59,7 @@ def update_fiber(module_name, module, cfg):
             logging.info("Updating data of %s" % module_name)
             module.update(cfg)
             logging.info("Updated data of %s" % module_name)
-        except ex:
+        except:
             logging.exception("Failed to update data of %s" % module_name)
         gevent.sleep(module.UPDATE_INTERVAL_SECONDS)
 
