@@ -125,8 +125,9 @@ def get(cfg):
     result = []
     for pkg in pkglist:
         filename = re.sub("\\.g.*-", '-', pkg['filename'])
+        download_count = pkg['download_series'].get(yesterday, 0)
         result.append({'filename': filename,
-                       'download_count': pkg['download_series'][yesterday],
+                       'download_count': download_count,
                        'url': 'https://packagecloud.io' + pkg['package_html_url']})
     return result
 
